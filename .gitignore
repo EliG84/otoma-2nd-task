@@ -7,10 +7,6 @@
 node_modules/
 dist/
 
-wanzy-report-card/dist/
-wanzy-report-card/node_modules/
-wanzy-report-card/.idea/
-
 # Compiled Java class files
 *.class
 
@@ -51,5 +47,10 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+#angular cache
+.angular/cache
+angular/cache
+/.angular/cache
 
 package-lock.json
