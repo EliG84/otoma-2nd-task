@@ -29,6 +29,12 @@
         box-shadow: none;
     }
 
+    select, input {
+        &:focus {
+            border: 1px solid var(--app-input-elemnt-hover-color);
+        }
+    }
+
     option {
         margin: 5px 0;
     }
