@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivationEnd, Router } from '@angular/router';
 import { filter, map, Observable } from 'rxjs';
+import { ActivationEnd, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActiveTab, routingModel, routingNames } from '../../../model/routing.model';
 
 @Component({

@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ActiveTab, routingModel } from './model/routing.model';
-
-export const routingConfiguration: ExtraOptions = {
-  // Allow inheritance of all params and data for child routes.
-  paramsInheritanceStrategy: 'always',
-};
 
 const routes: Routes = [
   {
@@ -39,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routingConfiguration)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

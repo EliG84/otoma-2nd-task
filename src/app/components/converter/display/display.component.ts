@@ -8,8 +8,6 @@ import { ConvertionResponse } from 'src/app/model/data.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisplayComponent {
-
   @Input()
   data: ConvertionResponse | null | undefined;
-
 }
