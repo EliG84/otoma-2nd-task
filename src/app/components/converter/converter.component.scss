@@ -29,10 +29,39 @@
         box-shadow: none;
     }
 
+    option {
+        margin: 5px 0;
+    }
+
     .converter-inputs-container {
         display: flex;
-        height: 50px;
         align-items: center;
         column-gap: 10px;
     }
 }
+
+@media screen and (max-width: 768px) {
+
+    .converter-inputs-container {
+        flex-direction: column;
+        row-gap: 20px;
+        width: 100%;
+        padding: 0 25px;
+
+        > *:not(label), select {
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            height: 60px;
+        }
+
+        input {
+            font-size: 2rem;
+        }
+
+        select * {
+            font-weight: bold;
+        }
+    }
+  }

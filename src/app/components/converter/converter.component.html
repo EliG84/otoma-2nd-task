@@ -7,13 +7,17 @@
                formControlName='amount'
                name="amount">
         <label for="select-from">From:</label>
-        <select class="converter-from-select"  formControlName='from' name="select-from" id="select-from">
+        <select class="converter-from-select"  
+                formControlName='from' 
+                name="select-from">
             <ng-container *ngFor="let currency of currencies$ | async">
                 <option [value]="currency?.short">{{currency?.short}}</option>
             </ng-container>
         </select>
         <label for="select-to">To:</label>
-        <select class="converter-to-select"  formControlName='to' name="select-from" id="select-to">
+        <select class="converter-to-select" 
+                formControlName='to' 
+                name="select-from">
             <ng-container *ngFor="let currency of currencies$ | async">
                 <option [value]="currency?.short">{{currency?.short}}</option>
             </ng-container>
