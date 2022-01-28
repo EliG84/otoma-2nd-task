@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedPipesModule } from './shared-pipes.module';
 import {HttpClientModule} from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
-const sharedModules = [ReactiveFormsModule, SharedPipesModule, HttpClientModule]
+const sharedModules = [
+  CommonModule,
+  ReactiveFormsModule, 
+  SharedPipesModule, 
+  HttpClientModule,
+  MatTableModule
+]
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     ...sharedModules
   ],
   exports: [...sharedModules]
