@@ -15,6 +15,7 @@ export class ConverterComponent implements OnInit {
 
   currentRate$: Observable<ConvertionResponse> | undefined;
   currencies$ = this.converterService.getCorrencies();
+  converterDebounceTime = 1000;
   form = this.fb.group({
     amount: [1,[Validators.required]],
     from: [null, Validators.required],
@@ -31,8 +32,8 @@ export class ConverterComponent implements OnInit {
 
   subToFormChanges(): void {
    this.currentRate$ = this.form.valueChanges.pipe(
-      filter(() => this.form.valid),
-      debounceTime(500),
+      debounceTime(this.converterDebounceTime),
+      filter(() => this.form.valid && (this.form.value['amount'] > 0)),
       switchMap(() => this.converterService.getConvertionRate(this.form.getRawValue())),
       tap((converted) => this.historyService.addHistory(converted)),
     )

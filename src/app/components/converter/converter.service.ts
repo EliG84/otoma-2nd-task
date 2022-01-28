@@ -18,7 +18,7 @@ export class ConverterService {
     if (fromSession) return of(fromSession);
     return this.httpService.get(apiRoutes.CURRENCIES).pipe(
       map((data) => {
-        return this.mapObjectToArray(data);
+        return this.mapObjectToArray(data || {});
       }),
       tap((data) => this.sessionStorage.setItem(SessionStorageKeys.CORRENCIES, data))
     );
@@ -27,8 +27,12 @@ export class ConverterService {
   getConvertionRate(request: IConverterForm): Observable<ConvertionResponse> {
     const url = `latest?amount=${request.amount}&from=${request.from}&to=${request.to}`;
     return this.httpService.get(url).pipe(
-      map(({rates}) => {
-        return new ConvertionResponse(request,rates[request.to]);
+      map((data) => {
+        if (data?.rates) {
+          return new ConvertionResponse(request,data.rates[request.to]);
+        } else {
+          return new ConvertionResponse(request,1);
+        }
       })
     )
   }

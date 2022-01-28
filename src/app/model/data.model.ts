@@ -31,11 +31,11 @@ export class ConvertionResponse {
     amount: number;
     from: string;
     to: string;
-    rate: number | null;
+    rate: number;
     constructor(data: IConverterForm, rate: number) {
         this.amount = data.amount;
         this.from = data.from;
         this.to = data.to;
-        this.rate = rate || null;
+        this.rate = rate;
     }
 }
