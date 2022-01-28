@@ -3,7 +3,12 @@ export const routingModel = {
     HISTORY: 'converted-history',
 }
 
+export const routingNames = {
+    CONVERTER: 'Currency Converter',
+    HISTORY: 'History',
+}
+
 export enum ActiveTab {
-    CONVERTER,
-    HISTORY,
+    CONVERTER = 1,
+    HISTORY = 2,
 }
