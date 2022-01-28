@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { ActiveTab, routingModel } from './model/routing.model';
+
+export const routingConfiguration: ExtraOptions = {
+  // Allow inheritance of all params and data for child routes.
+  paramsInheritanceStrategy: 'always',
+};
 
 const routes: Routes = [
   {
@@ -13,12 +18,12 @@ const routes: Routes = [
     children: [
       {
         path: routingModel.CONVERTER,
-        loadChildren: () => import('./components/converter/converter-routing.module').then((m) => m.ConverterRoutingModule),
+        loadChildren: () => import('./components/converter/converter.module').then((m) => m.ConverterModule),
         data: {activeTab: ActiveTab.CONVERTER}
       },
       {
         path: routingModel.HISTORY,
-        loadChildren: () => import('./components/history/history-routing.module').then((m) => m.HistoryRoutingModule),
+        loadChildren: () => import('./components/history/history.module').then((m) => m.HistoryModule),
         data: {activeTab: ActiveTab.HISTORY}
       },
       {
@@ -34,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routingConfiguration)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
