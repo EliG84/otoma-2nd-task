@@ -7,7 +7,7 @@
       </mat-cell>
     </ng-container>
     <mat-header-row class="history-table-header" *matHeaderRowDef="columns; sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    <mat-row class="history-table-row" *matRowDef="let row; columns: columns"></mat-row>
   </mat-table>
 </ng-container>
 

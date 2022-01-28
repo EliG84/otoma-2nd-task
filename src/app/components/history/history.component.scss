@@ -26,3 +26,11 @@
 .history-table-header {
     background-color: white;
 }
+
+.history-table-row {
+    &:hover {
+        background-color: var(--app-history-table-row-hover-color);
+        color: white;
+        font-weight: bold;
+    }
+}
