@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { routingModel } from 'src/app/model/routing.model';
 import { HistoryService } from './history.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { HistoryService } from './history.service';
 })
 export class HistoryComponent implements OnDestroy {
 
-  history$ = this.historyService.history_public$;
+  dataSource$ = this.historyService.history_public$;
+  columns = ['Amount', 'From', 'To', 'Date'];
+  appRoutes = routingModel;
+  dateFomat = 'd/YY, H:MM';
+  dateColumn = 'Date';
 
   constructor(private historyService: HistoryService) { }
 

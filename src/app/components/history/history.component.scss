@@ -1,0 +1,28 @@
+.history-empty-container {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    a {
+        font-size: 2rem;
+        text-decoration: none;
+    }
+}
+
+.history-table {
+    height: 100%;
+    overflow-y: scroll;
+    &.scroller::-webkit-scrollbar {
+        width: 7px;
+      }
+  &.scroller::-webkit-scrollbar-thumb {
+        background: #c6c6c6;
+        border-radius: 3px;
+      }
+}
+
+.history-table-header {
+    background-color: white;
+}
