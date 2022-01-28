@@ -1,13 +1,15 @@
 <div class="container" [formGroup]='form'>
     <h3 class='converter-header'>Currency Converter</h3>
     <div class="converter-inputs-container">
-        <input class="converter-amount-input" 
+        <input class="converter-amount-input"
+               tabindex
                type="number"
                min="0"
                formControlName='amount'
                name="amount">
         <label for="select-from">From:</label>
-        <select class="converter-from-select"  
+        <select class="converter-from-select"
+                tabindex  
                 formControlName='from' 
                 name="select-from">
             <ng-container *ngFor="let currency of currencies$ | async">
@@ -15,7 +17,8 @@
             </ng-container>
         </select>
         <label for="select-to">To:</label>
-        <select class="converter-to-select" 
+        <select class="converter-to-select"
+                tabindex
                 formControlName='to' 
                 name="select-from">
             <ng-container *ngFor="let currency of currencies$ | async">
