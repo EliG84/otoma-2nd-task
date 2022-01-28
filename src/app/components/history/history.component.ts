@@ -13,7 +13,7 @@ export class HistoryComponent implements OnDestroy {
   dataSource$ = this.historyService.history_public$;
   columns = ['Amount', 'From', 'To', 'Date'];
   appRoutes = routingModel;
-  dateFomat = 'd/YY, H:MM';
+  dateFomat = 'dd/YY HH:mm';
   dateColumn = 'Date';
 
   constructor(private historyService: HistoryService) { }
