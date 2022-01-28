@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { HistoryService } from './history.service';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss']
+  styleUrls: ['./history.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnDestroy {
 
-  constructor() { }
+  history$ = this.historyService.history_public$;
 
-  ngOnInit(): void {
+  constructor(private historyService: HistoryService) { }
+
+  ngOnDestroy(): void {
+      this.historyService.overwriteSessionStorage();
   }
 
 }

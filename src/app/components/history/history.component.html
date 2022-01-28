@@ -1,1 +1,16 @@
-<p>history works!</p>
+<table>
+    <thead>
+      <th>Amount</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of history$ | async">
+        <td>{{history.amount}}</td>
+        <td>{{history.from}}</td>
+        <td>{{history.to}}</td>
+        <td>{{history.date}}</td>
+      </tr>
+    </tbody>
+  </table>
