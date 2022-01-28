@@ -1,3 +1,21 @@
-.active-link {
-    border: 1px solid red;
+.container {
+    background-color: var(--app-header-color);
+    height: var(--app-header-height-desktop);
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+
+    > a:not(:last-of-type) {
+        margin-right: 15px;
+    }
+
+    .router-link {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        &--active {
+            color: var(--app-router-link-active-color);
+        }
+    }
 }

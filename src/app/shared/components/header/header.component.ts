@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { filter, map, Observable } from 'rxjs';
 import { ActiveTab, routingModel, routingNames } from '../../../model/routing.model';
@@ -6,7 +6,8 @@ import { ActiveTab, routingModel, routingNames } from '../../../model/routing.mo
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
 

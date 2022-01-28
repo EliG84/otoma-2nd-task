@@ -1,5 +1,5 @@
 <div class="container">
     <ng-container *ngFor="let route of routes$ | async">
-        <a rel="stylesheet" [routerLink]="['/',route.route]" [ngClass]="{'active-link': route.active}">{{route.name}}</a>
+        <a class="router-link" [routerLink]="['/',route.route]" [ngClass]="{'router-link--active': route.active}">{{route.name}}</a>
     </ng-container>
 </div>
