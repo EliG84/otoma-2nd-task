@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { filter, map, Observable } from 'rxjs';
-import { ActiveTab, routingModel, routingNames } from '../model/routing.model';
+import { ActiveTab, routingModel, routingNames } from '../../../model/routing.model';
 
 @Component({
   selector: 'app-header',
