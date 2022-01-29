@@ -1,7 +1,7 @@
 import { ConverterService } from './converter.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { HistoryService } from '../history/history.service';
-import { ConvertionResponse, IConverterForm } from 'src/app/model/data.model';
+import { ConvertionResponse } from 'src/app/model/data.model';
 import { debounceTime, distinctUntilChanged, filter, Observable, switchMap, tap } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 

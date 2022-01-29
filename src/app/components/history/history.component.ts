@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { routingModel } from 'src/app/model/routing.model';
 import { HistoryService } from './history.service';
+import { routingModel } from 'src/app/model/routing.model';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-history',
