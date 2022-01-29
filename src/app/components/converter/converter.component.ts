@@ -34,33 +34,10 @@ export class ConverterComponent implements OnInit {
   subToFormChanges(): void {
    this.currentRate$ = this.form.valueChanges.pipe(
       debounceTime(this.converterDebounceTime),
-      distinctUntilChanged(this.isTheSame),
-      filter(this.isConvertAllowed),
+      distinctUntilChanged(this.converterService.isConvertTheSame),
+      filter(this.converterService.isConvertAllowed),
       switchMap(() => this.converterService.getConvertionRate(this.form.getRawValue())),
       tap((converted) => this.historyService.addHistory(converted)),
     );
   }
-
-  isConvertAllowed(value: IConverterForm): boolean {
-    if (value.amount && value.amount > 0) {
-      if (value.from && value.to) {
-        if (value.from !== value.to) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  isTheSame(prev: IConverterForm, curr: IConverterForm): boolean {
-    if (prev.amount === curr.amount) {
-      if (prev.from === curr.from) {
-        if (prev.to === curr.to) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
 }

@@ -44,4 +44,26 @@ export class ConverterService {
     }
     return array;
   }
+
+  isConvertAllowed(value: IConverterForm): boolean {
+    if (value.amount && value.amount > 0) {
+      if (value.from && value.to) {
+        if (value.from !== value.to) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  isConvertTheSame(prev: IConverterForm, curr: IConverterForm): boolean {
+    if (prev.amount === curr.amount) {
+      if (prev.from === curr.from) {
+        if (prev.to === curr.to) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
