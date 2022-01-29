@@ -3,7 +3,8 @@
     <ng-container *ngFor="let col of columns;" [matColumnDef]="col">
       <mat-header-cell *matHeaderCellDef>{{col}}</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{col === dateColumn ? (element[col.toLowerCase()] | date : dateFomat ) : element[col.toLowerCase()]}}
+        {{col === dateColumn ? (element[col.toLowerCase()] | date : dateFomat ) : 
+          col !== amountColumn ? (element[col.toLowerCase()] | currencyName)    : element[col.toLowerCase()] }}
       </mat-cell>
     </ng-container>
     <mat-header-row class="history-table-header" *matHeaderRowDef="columns; sticky: true"></mat-header-row>

@@ -18,6 +18,7 @@ export class ConverterService {
     if (fromSession) return of(fromSession);
     return this.httpService.get(apiRoutes.CURRENCIES).pipe(
       map((data) => {
+        this.sessionStorage.setItem(SessionStorageKeys.CURRENCY_DICTIONARY, data || {});
         return this.mapObjectToArray(data || {});
       }),
       tap((data) => this.sessionStorage.setItem(SessionStorageKeys.CORRENCIES, data))

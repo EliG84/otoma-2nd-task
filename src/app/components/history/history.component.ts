@@ -1,6 +1,6 @@
 import { HistoryService } from './history.service';
 import { routingModel } from 'src/app/model/routing.model';
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-history',
@@ -8,18 +8,13 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
   styleUrls: ['./history.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HistoryComponent implements OnDestroy {
-
+export class HistoryComponent {
   dataSource$ = this.historyService.history_public$;
   columns = ['Amount', 'From', 'To', 'Date'];
   appRoutes = routingModel;
   dateFomat = 'dd/YY HH:mm';
   dateColumn = 'Date';
+  amountColumn = 'Amount';
 
   constructor(private historyService: HistoryService) { }
-
-  ngOnDestroy(): void {
-      this.historyService.overwriteSessionStorage();
-  }
-
 }
