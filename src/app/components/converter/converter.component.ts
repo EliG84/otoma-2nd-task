@@ -1,8 +1,8 @@
 import { ConverterService } from './converter.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HistoryService } from '../history/history.service';
-import { ConvertionResponse } from 'src/app/model/data.model';
-import { debounceTime, filter, Observable, switchMap, tap } from 'rxjs';
+import { ConvertionResponse, IConverterForm } from 'src/app/model/data.model';
+import { debounceTime, distinctUntilChanged, filter, Observable, switchMap, tap } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -34,12 +34,25 @@ export class ConverterComponent implements OnInit {
   subToFormChanges(): void {
    this.currentRate$ = this.form.valueChanges.pipe(
       debounceTime(this.converterDebounceTime),
+      distinctUntilChanged(this.isTheSame),
       filter(() => this.form.valid),
       filter(() => this.form.value['amount'] > 0),
       filter(() => this.form.value['from'] !== this.form.value['to']),
       switchMap(() => this.converterService.getConvertionRate(this.form.getRawValue())),
       tap((converted) => this.historyService.addHistory(converted)),
     );
+  }
+
+  isTheSame(prev: IConverterForm, curr: IConverterForm): boolean {
+
+    if (prev.amount === curr.amount) {
+      if (prev.from === curr.from) {
+        if (prev.to === curr.to) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
 }
