@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { ConverterComponent } from './converter.component';
 import { DisplayComponent } from './display/display.component';
 import { ConverterRoutingModule } from './converter-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ConverterComponent,
@@ -12,7 +12,7 @@ import { ConverterRoutingModule } from './converter-routing.module';
   imports: [
     CommonModule,
     ConverterRoutingModule,
-    SharedModule
+    ReactiveFormsModule,
   ]
 })
 export class ConverterModule { }

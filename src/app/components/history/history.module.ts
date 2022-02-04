@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HistoryComponent } from './history.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { HistoryRoutingModule } from './history-routing.module';
+import { MatTableModule } from '@angular/material/table';
+import { CurrencyNamePipe } from 'src/app/shared/pipes/currency-name.pipe';
 @NgModule({
   declarations: [
-    HistoryComponent
+    HistoryComponent,
+    CurrencyNamePipe
   ],
   imports: [
     CommonModule,
     HistoryRoutingModule,
-    SharedModule
+    MatTableModule,
   ]
 })
 export class HistoryModule { }
