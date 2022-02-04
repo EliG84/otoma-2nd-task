@@ -60,16 +60,16 @@
         width: 100%;
         padding: 0 25px;
 
-        > *:not(label), select {
+        > *:not(label) {
             width: 100%;
             text-align: center;
             font-size: 1.2rem;
             font-weight: bold;
-            height: 60px;
         }
 
         input {
             font-size: 2rem;
+            height: 60px;
         }
 
         select * {
