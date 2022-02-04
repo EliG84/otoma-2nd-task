@@ -1,0 +1,12 @@
+<label [for]="accesabilityName">{{label}}</label>
+<select class="converter-select"
+(click)="onTouch()"
+(change)="onSelectionChange($event)"
+tabindex
+[disabled]="disabled"
+[name]="accesabilityName">
+<option value=""></option>
+<ng-container *ngFor="let currency of currencies | keyvalue">
+<option [value]="currency?.key">{{currency?.key}}</option>
+</ng-container>
+</select>

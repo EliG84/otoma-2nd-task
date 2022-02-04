@@ -7,24 +7,16 @@
                min="0"
                formControlName='amount'
                name="amount">
-        <label for="select-from">From:</label>
-        <select class="converter-from-select"
-                tabindex  
-                formControlName='from' 
-                name="select-from">
-            <ng-container *ngFor="let currency of currencies$ | async | keyvalue">
-                <option [value]="currency?.key">{{currency?.key}}</option>
-            </ng-container>
-        </select>
-        <label for="select-to">To:</label>
-        <select class="converter-to-select"
-                tabindex
-                formControlName='to' 
-                name="select-from">
-            <ng-container *ngFor="let currency of currencies$ | async | keyvalue">
-                <option [value]="currency?.key">{{currency?.key}}</option>
-            </ng-container>
-        </select>
+        <ng-container *ngIf="currencies$ | async as currencies">
+            <app-currency-selector [currencies]="currencies" 
+                                   accesabilityName="select-from"
+                                   label="From"
+                                   formControlName="from"></app-currency-selector>
+            <app-currency-selector [currencies]="currencies"
+                                   accesabilityName="select-from"
+                                   label="To"
+                                   formControlName="to"></app-currency-selector>
+        </ng-container>
     </div>
 </div>
 <app-display [data]="currentRate$ | async"></app-display>

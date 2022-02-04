@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { HistoryService } from '../history/history.service';
 import { ConvertionResponse } from 'src/app/model/data.model';
 import { debounceTime, distinctUntilChanged, filter, Observable, switchMap, tap } from 'rxjs';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-converter',
@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./converter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConverterComponent implements OnInit {
+export class ConverterComponent implements AfterViewInit {
 
   currentRate$: Observable<ConvertionResponse> | undefined;
   currencies$ = this.converterService.getCorrencies();
@@ -27,7 +27,7 @@ export class ConverterComponent implements OnInit {
               private readonly historyService: HistoryService,
               private readonly fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.subToFormChanges();
   }
 
