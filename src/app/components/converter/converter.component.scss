@@ -48,6 +48,12 @@
 
 @media screen and (max-width: 768px) {
 
+    :host {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
     .converter-inputs-container {
         flex-direction: column;
         row-gap: 20px;

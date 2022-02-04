@@ -1,6 +1,6 @@
 
 <div class="container" *ngIf="data">
-    <p class="amount">{{data.amount | currency: data.from}}</p>
-    <p class="equals"> = </p>
-    <p class="rate">{{data.rate | currency: data.to}}</p>
+    <span class="currenty-text amount">{{data.amount | currency: data.from}}</span>
+    <span class="currenty-text equals"> = </span>
+    <span class="currenty-text rate">{{data.rate | currency: data.to}}</span>
 </div>

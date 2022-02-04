@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
 
-    p {
+    .currenty-text {
         color: var(--app-converter-display-text-color);
         font-size: 1.3rem;
         font-weight: bold;
@@ -15,7 +15,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .container >  p {
+  .container {
+    display: flex;
+    flex-direction: column;
+    .currenty-text {
         font-size: 1.5rem;
     }
   }
+}
