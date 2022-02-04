@@ -4,7 +4,7 @@ import { SessionStorageKeys } from 'src/app/app.consts';
 import { HttpService } from 'src/app/core/http.service';
 import { SessionStorageService } from 'src/app/core/session-storage.service';
 import { apiRoutes, ICurrenciesResponse } from 'src/app/model/api.model';
-import { ConvertionResponse, CurrenciesResponse, IConverterForm } from 'src/app/model/data.model';
+import { ConvertionResponse, IConverterForm } from 'src/app/model/data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,13 @@ export class ConverterService {
   constructor(private readonly httpService: HttpService,
               private readonly sessionStorage: SessionStorageService) { }
 
-  getCorrencies(): Observable<CurrenciesResponse[]> {
+  getCorrencies(): Observable<ICurrenciesResponse> {
     const fromSession = this.sessionStorage.readItem(SessionStorageKeys.CORRENCIES);
     if (fromSession) return of(fromSession);
     return this.httpService.get(apiRoutes.CURRENCIES).pipe(
       map((data) => {
         this.sessionStorage.setItem(SessionStorageKeys.CURRENCY_DICTIONARY, data || {});
-        return this.mapObjectToArray(data || {});
+        return data
       }),
       tap((data) => this.sessionStorage.setItem(SessionStorageKeys.CORRENCIES, data))
     );
@@ -36,14 +36,6 @@ export class ConverterService {
         }
       })
     )
-  }
-
-  mapObjectToArray(object: ICurrenciesResponse): CurrenciesResponse[] {
-    const array: CurrenciesResponse[] = [];
-    for (const key in object) {
-      array.push(new CurrenciesResponse({[key]: object[key]}));
-    }
-    return array;
   }
 
   isConvertAllowed(value: IConverterForm): boolean {

@@ -12,8 +12,8 @@
                 tabindex  
                 formControlName='from' 
                 name="select-from">
-            <ng-container *ngFor="let currency of currencies$ | async">
-                <option [value]="currency?.short">{{currency?.short}}</option>
+            <ng-container *ngFor="let currency of currencies$ | async | keyvalue">
+                <option [value]="currency?.key">{{currency?.key}}</option>
             </ng-container>
         </select>
         <label for="select-to">To:</label>
@@ -21,8 +21,8 @@
                 tabindex
                 formControlName='to' 
                 name="select-from">
-            <ng-container *ngFor="let currency of currencies$ | async">
-                <option [value]="currency?.short">{{currency?.short}}</option>
+            <ng-container *ngFor="let currency of currencies$ | async | keyvalue">
+                <option [value]="currency?.key">{{currency?.key}}</option>
             </ng-container>
         </select>
     </div>
