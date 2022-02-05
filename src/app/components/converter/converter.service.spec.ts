@@ -6,10 +6,15 @@ import { SessionStorageService } from 'src/app/core/session-storage.service';
 import { ConverterService } from './converter.service';
 
 describe('ConverterService', () => {
-  let service: ConverterService;
+  let service: ConverterService,
+      sessionStorageSpy: any,
+      httpServiceSpy: any;
   beforeEach(() => {
+    sessionStorageSpy = jasmine.createSpyObj('SessionStorageService', ['setItem', 'readItem']);
+    httpServiceSpy = jasmine.createSpyObj('HttpService', ['get', 'handleResponse']);
     TestBed.configureTestingModule({
-      providers: [HttpService,SessionStorageService, HttpClient, HttpHandler]
+      providers: [{provide: SessionStorageService, useValue: sessionStorageSpy},
+                  {provide: HttpService, useValue: httpServiceSpy}],
     });
     service = TestBed.inject(ConverterService);
   });
