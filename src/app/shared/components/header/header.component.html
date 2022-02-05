@@ -1,8 +1,8 @@
 <header class="container">
-    <ng-container *ngFor="let route of routes$ | async">
+    <ng-container *ngFor="let route of routes">
         <a class="router-link" 
-           [routerLink]="['/',route.route]" 
-           [ngClass]="{'router-link--active': route.active}">
+           [routerLink]="[route.route]" 
+           routerLinkActive="router-link--active">
            {{route.name}}</a>
     </ng-container>
 </header>

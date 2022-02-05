@@ -10,28 +10,16 @@ import { ActiveTab, routingModel, routingNames } from '../../../model/routing.mo
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  routes$: Observable<{route: string, name: string, active: boolean}[]> | undefined;
-
-  constructor(private readonly router: Router) {}
-
-  ngOnInit(): void {
-    this.routes$ = this.router.events.pipe(
-      filter((event) => event instanceof ActivationEnd && event.snapshot.data[activeTab]),
-      map((event) => {
-      return [
-        {
-          route: routingModel.CONVERTER,
-          name: routingNames.CONVERTER,
-          active: (event as ActivationEnd).snapshot.data[activeTab] === ActiveTab.CONVERTER,
-        },
-        {
-          route: routingModel.HISTORY,
-          name: routingNames.HISTORY,
-          active: (event as ActivationEnd).snapshot.data[activeTab] === ActiveTab.HISTORY,
-        }
-      ]
-    }))
-  }
+  routes = [
+    {
+      route: routingModel.CONVERTER,
+      name: routingNames.CONVERTER,
+    },
+    {
+      route: routingModel.HISTORY,
+      name: routingNames.HISTORY,
+    }
+  ];
 }
