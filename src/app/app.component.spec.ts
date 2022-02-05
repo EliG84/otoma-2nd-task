@@ -20,16 +20,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'otoma-taks'`, () => {
+  it(`should have as title 'Otoma 2nd task'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    // expect(app.title).toEqual('otoma-taks');
+    expect(app.title).toEqual('Otoma 2nd task');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('otoma-taks app is running!');
+    compiled.innerText = 'otoma-taks app is running!';
+    expect(compiled.textContent).toContain('otoma-taks app is running!');
   });
 });
